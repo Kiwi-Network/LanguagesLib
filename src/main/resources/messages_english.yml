@@ -1,0 +1,18 @@
+Rank:
+  command:
+    nonExist: "§Non-existed rank"
+    unLogin: "§cPlayer %player% isn't online."
+  info:
+    addexp1: "§aYou have gained %1% experiences, %3% to upgrade."
+    addexp2: "§aYou have gained %1% experiences and successfully upgraded to %2%."
+    addexp3: "§aYou have already reached the full level and cannot gain any additional experiences."
+  inquire: "§aLevel of %1%: %2% §a(Experiences: %3%)"
+  inquireFailed: "§cNon-existed player."
+  scoreboard:
+    title: "§a§lKiwi §2§lNetwork"
+    list:
+      - §1
+      - "§fRank: %rank%"
+      - "§fLevel: %level%"
+      - §2
+      - §el-ee.cn

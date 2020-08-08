@@ -5,7 +5,9 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class LLB extends JavaPlugin implements LLBInterface{
 
@@ -25,6 +27,12 @@ public class LLB extends JavaPlugin implements LLBInterface{
                 messages.put(m.getName(),YamlConfiguration.loadConfiguration(m));
             }
         }
+
+        if(!new File(getDataFolder(),"messages_chinese.yml").exists()) {
+            saveResource("messages_chinese.yml", false);
+            saveResource("messages_chineset.yml", false);
+            saveResource("messages_english.yml", false);
+        }
     }
 
 
@@ -34,18 +42,55 @@ public class LLB extends JavaPlugin implements LLBInterface{
     }
 
     public String getString(String lang, String key) {
-        if(messages.containsKey("messaegs_"+lang+".yml")){
+        if(messages.containsKey("messages_"+lang+".yml")){
             try {
-                return messages.get("messaegs_" + lang + ".yml").getString("key");
+                return messages.get("messages_" + lang + ".yml").getString(key);
 
             }catch (Exception e){
-                return getString("chinese",key);
+                if(lang.equals("chinese")){
+                    System.out.print("!!!!!! Unfounded Key: " + key + " !!!!!!");
+                    return "";
+                }
+                else
+                    return getString("chinese",key);
             }
         }
-        return getString("chinese",key);
+        if(lang.equals("chinese")){
+            System.out.print("We cannot found chinese language file!");
+            return "";
+        }
+        else
+            return getString("chinese",key);
     }
 
     public String getPlayerString(String player, String key) {
         return getString(getLang(player),key);
+    }
+
+    public List<String> getListString(String lang, String key) {
+        if(messages.containsKey("messages_"+lang+".yml")){
+            try {
+                return messages.get("messages_" + lang + ".yml").getStringList(key);
+
+            }catch (Exception e){
+                if(lang.equals("chinese")) {
+                    System.out.print("!!!!!! Unfounded Key: " + key + " !!!!!!");
+                    return new ArrayList<String>();
+                }
+                else
+                return getListString("chinese",key);
+            }
+        }
+
+        if(lang.equals("chinese")) {
+            System.out.print("We cannot found chinese language file!");
+            return new ArrayList<String>();
+        }
+        else
+            return getListString("chinese",key);
+    }
+
+    public List<String> getPlayerListString(String player, String key) {
+        return getListString(getLang(player),key);
     }
 }

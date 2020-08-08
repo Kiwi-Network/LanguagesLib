@@ -1,0 +1,18 @@
+Rank:
+  command:
+    nonExist: "§身份等級不存在"
+    unLogin: "§c玩家 %player% 不在線上"
+  info:
+    addexp1: "§a您獲得了%1%經驗, 距離升級到%2%還差%3%經驗"
+    addexp2: "§a您獲得了%1%經驗, 成功升級到%2%, 距離下一級還差%3%經驗"
+    addexp3: "§a您已經滿級, 無法獲得额外的經驗"
+  inquire: "§a玩家 %1% 當前等級 %2% §a(經驗%3%)"
+  inquireFailed: "§c玩家不存在!"
+  scoreboard:
+    title: "§a§lKiwi §2§lNetwork"
+    list:
+      - §1
+      - "§f身份: %rank%"
+      - "§f等級: %level%"
+      - §2
+      - §el-ee.cn
