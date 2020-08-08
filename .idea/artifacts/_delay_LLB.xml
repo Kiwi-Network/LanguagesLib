@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="[delay]LLB">
+    <output-path>$PROJECT_DIR$/out/artifacts/_delay_LLB</output-path>
+    <root id="archive" name="[delay]LLB.jar">
+      <element id="module-output" name="languagesLib" />
+    </root>
+  </artifact>
+</component>
